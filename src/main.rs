@@ -25,9 +25,9 @@ use base64::{engine::general_purpose::STANDARD as B64, Engine as _};
 use clap::{Parser, Subcommand};
 use crossterm::{
     cursor,
-    event::{self, Event, KeyCode, KeyEvent, KeyModifiers},
+    event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers},
     execute,
-    style::{self, Stylize},
+    style::Stylize,
     terminal::{self, ClearType},
 };
 use rand::RngCore;
@@ -333,7 +333,10 @@ async fn run_chat(stream: TcpStream, my_name: String, peer_info: String, is_host
                 Err(_) => break,
             };
 
-            if let Event::Key(KeyEvent { code, modifiers, .. }) = ev {
+            // On Windows crossterm fires Press + Release (and sometimes Repeat).
+            // Only handle Press so each keystroke is processed exactly once.
+            if let Event::Key(KeyEvent { code, modifiers, kind, .. }) = ev {
+                if kind != KeyEventKind::Press { continue; }
                 match code {
                     // ── Enter: send message ───────────────────────────────
                     KeyCode::Enter => {
@@ -516,8 +519,8 @@ fn print_banner() {
   ██╔══██╗╚════██╗██╔══██╗    ██╔════╝██║  ██║██╔══██╗╚══██╔══╝
   ██████╔╝ █████╔╝██████╔╝    ██║     ███████║███████║   ██║   
   ██╔═══╝ ██╔═══╝ ██╔═══╝     ██║     ██╔══██║██╔══██║   ██║   
-  ██║     ███████╗██║          ╚██████╗██║  ██║██║  ██║   ██║   
-  ╚═╝     ╚══════╝╚═╝           ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝  
+  ██║     ███████╗██║         ╚██████╗██║  ██║██║  ██║   ██║   
+  ╚═╝     ╚══════╝╚═╝          ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝  
 "#.cyan());
     println!("  {}\n", "Encrypted P2P terminal chat — Rust · X25519 · AES-256-GCM".dark_grey());
 }

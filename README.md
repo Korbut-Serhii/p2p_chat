@@ -150,7 +150,7 @@ Or via GUI: Windows Defender Firewall → Advanced Settings → Inbound Rules �
 p2p_chat/
 ├── Cargo.toml        # Dependencies
 └── src/
-    └── main.rs       # All source code (~300 lines)
+    └── main.rs       # All source code
 ```
 
 ### Dependencies
