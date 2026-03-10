@@ -197,3 +197,6 @@ p2p_chat/
     → print formatted message locally
     → encrypt(nonce, JSON) → base64 → send over TCP
 ```
+
+---
+Made by Weksar (Korbut Serhii)
