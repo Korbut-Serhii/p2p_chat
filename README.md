@@ -1,4 +1,4 @@
-# 🔗 P2P Chat — Rust · X25519 · AES-256-GCM
+# P2P Chat — Rust · X25519 · AES-256-GCM
 
 A minimal encrypted peer-to-peer terminal chat.  
 No servers, no accounts — two computers connect directly over TCP.  
@@ -6,7 +6,7 @@ Every message is **end-to-end encrypted** before it leaves your machine.
 
 ---
 
-## 🔒 Security
+## Security
 
 | What | Why |
 |------|-----|
@@ -26,14 +26,14 @@ Every message is **end-to-end encrypted** before it leaves your machine.
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 - Windows 10 / 11
 - [Rust](https://rustup.rs/) — installed with a single executable
 
 ---
 
-## 🚀 Installing Rust (one-time setup)
+## Installing Rust (one-time setup)
 
 1. Go to **https://rustup.rs**
 2. Download and run **`rustup-init.exe`**
@@ -50,7 +50,7 @@ Both should print version numbers.
 
 ---
 
-## 🔨 Building
+## Building
 
 ```powershell
 cd C:\path\to\p2p_chat
@@ -62,7 +62,7 @@ Output binary: `target\release\p2p_chat.exe`
 
 ---
 
-## 🎮 Usage
+## Usage
 
 ### Step 1 — Find your local IP
 
@@ -89,7 +89,7 @@ Replace `192.168.1.10` with the actual IP of Computer A.
 
 ---
 
-## 💬 Controls
+## Controls
 
 | Key / Command | Action |
 |---------------|--------|
@@ -100,7 +100,7 @@ Replace `192.168.1.10` with the actual IP of Computer A.
 
 ---
 
-## 🖥️ Quick test on one computer (two PowerShell windows)
+## Quick test on one computer (two PowerShell windows)
 
 **Window 1:**
 ```powershell
@@ -116,7 +116,7 @@ Type in either window — messages appear in both, with no duplication.
 
 ---
 
-## 🌐 Chat over the Internet (different networks)
+## Chat over the Internet (different networks)
 
 Forward the port on the **host's router**:
 
@@ -131,7 +131,7 @@ Guest connects:
 
 ---
 
-## 🛡️ Windows Firewall
+## Windows Firewall
 
 If the connection is refused, Windows Firewall may be blocking the port.
 
@@ -144,7 +144,7 @@ Or via GUI: Windows Defender Firewall → Advanced Settings → Inbound Rules �
 
 ---
 
-## 🗂️ Project structure
+## Project structure
 
 ```
 p2p_chat/
@@ -170,7 +170,7 @@ p2p_chat/
 
 ---
 
-## 📡 How it works
+## How it works
 
 ```
   Alice                              Bob
